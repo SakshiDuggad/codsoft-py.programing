@@ -1,0 +1,60 @@
+'''TO-DO LIST
+TASK 1
+A To-Do List application is a useful project that helps users manage
+and organize their tasks efficiently. This project aims to create a
+command-line or GUI-based application using Python, allowing
+users to create, update, and track their to-do list'''
+
+Command-Line Version
+
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self):
+        task = input("Enter a task: ")
+        self.tasks.append(task)
+        print("Task added!")
+
+    def view_tasks(self):
+        print("Your tasks:")
+        for i, task in enumerate(self.tasks, start=1):
+            print(f"{i}. {task}")
+
+    def update_task(self):
+        self.view_tasks()
+        task_number = int(input("Enter the task number to update: ")) - 1
+        new_task = input("Enter the new task: ")
+        self.tasks[task_number] = new_task
+        print("Task updated!")
+
+    def delete_task(self):
+        self.view_tasks()
+        task_number = int(input("Enter the task number to delete: ")) - 1
+        del self.tasks[task_number]
+        print("Task deleted!")
+
+def main():
+    todo = ToDoList()
+    while True:
+        print("\n1. Add task")
+        print("2. View tasks")
+        print("3. Update task")
+        print("4. Delete task")
+        print("5. Quit")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            todo.add_task()
+        elif choice == "2":
+            todo.view_tasks()
+        elif choice == "3":
+            todo.update_task()
+        elif choice == "4":
+            todo.delete_task()
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
